@@ -20,21 +20,22 @@ body {
   align-items: center;
   box-shadow: 0 0 5px 0;
   font-size: 1.5em;
+  min-height: 5em;
 }
 
 .content {
   grid-row: 2 / 3;
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 2fr 1fr;
 }
 
 .books {
   padding: 30px 30px 30px 25px;
   grid-column: 1 / 2;
   display: grid;
+  /* Change to flex */
   gap: 45px;
   grid-template-columns: 1fr 1fr 1fr;
-  max-width: 1000px;
 }
 
 .book {
@@ -50,6 +51,77 @@ body {
   padding-bottom: 15px;
 }
 
+.book-add {
+  grid-column: 2 / 3;  
+}
+
+.book-add-form {
+  margin-top: 30px;
+  min-width: 100px;
+  max-width: 90%;
+  position: sticky;
+  top: 30px;
+}
+
+.form-row input {
+  background-color: #FFFFFF;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
+  width: 100%;
+  padding: 7px;
+  font-family: monospace;
+  font-size: 0.85em;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.legacy-form-row {
+  border: none;
+  min-width: 200px;
+}
+
+.legacy-form-row legend {
+  margin-bottom: 15px;
+}
+
+.legacy-form-row .radio-label {
+  display: block;
+  font-size: 14px;
+  padding: 0 20px 0 10px;
+}
+
+.legacy-form-row .radio-label,
+.legacy-form-row input[type='radio'] {
+  float: left;
+}
+
+.form-row, .legacy-form-row {
+  font-size: 1.5em;
+}
+
+.form-row button {
+  border: none;
+  border-radius: 3px;
+  margin-top: 15px;
+  padding: 10px 0 10px 0;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 1em;
+  width: 120px;
+  text-align: center;
+}
+
+.form-row button:hover {
+  background-color: #e1e2e4;
+}
+
+.form-row button:active {
+  background-color: #c3c5c6;
+}
 
 .footer {
   text-align: center;
