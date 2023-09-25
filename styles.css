@@ -51,8 +51,8 @@ body {
   padding-bottom: 15px;
 }
 
-.book-add {
-  grid-column: 2 / 3;  
+.add-book{
+  user-select: none;
 }
 
 .book-add-form {
@@ -77,42 +77,30 @@ body {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
-}
-
-.legacy-form-row {
-  border: none;
-  min-width: 200px;
-}
-
-.legacy-form-row legend {
-  margin-bottom: 15px;
-}
-
-.legacy-form-row .radio-label {
-  display: block;
-  font-size: 14px;
-  padding: 0 20px 0 10px;
-}
-
-.legacy-form-row .radio-label,
-.legacy-form-row input[type='radio'] {
-  float: left;
-}
-
-.form-row, .legacy-form-row {
   font-size: 1.5em;
+}
+
+#checkbox-div {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+#read {
+  width: 20px;
 }
 
 .form-row button {
   border: none;
   border-radius: 3px;
-  margin-top: 15px;
+  margin-top: 0px;
   padding: 10px 0 10px 0;
   cursor: pointer;
   font-family: monospace;
   font-size: 1em;
   width: 120px;
   text-align: center;
+  user-select: none;
 }
 
 .form-row button:hover {
