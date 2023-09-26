@@ -42,14 +42,22 @@ function addBookToLibrary () {
   
   const readElement = document.createElement("p");
   document.getElementById(bookElement.id).appendChild(readElement);
+  readElement.classList.add("p-read");
   readInput.checked === true ? library[bookElement.id].read = "Yes"
                              : library[bookElement.id].read = "No";
   readElement.innerHTML += `<strong>Read: </strong>${library[bookElement.id].read}`;
+
+  const deleteElement = document.createElement("div");
+  document.getElementById(bookElement.id).appendChild(deleteElement);
+  deleteElement.classList.add("delete");
+  deleteElement.innerHTML += "X";
+
+  removeBookElement();
 }
 
 submit.addEventListener("click", (e) => {
   e.preventDefault();
-  
+
   if (titleInput.value !== "") {
   addBookToLibraryArr(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
   addBookToLibrary();
@@ -58,3 +66,13 @@ submit.addEventListener("click", (e) => {
   form.reset();
   console.log(library);
 });
+
+function removeBookElement () {
+  const deleteElements = document.querySelectorAll(".delete");
+  for (deleteElement of deleteElements) {
+    deleteElement.addEventListener("click", (e) => {
+      console.log(e.target.parentElement);
+      e.target.parentElement.remove();
+    })
+  }
+}
