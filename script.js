@@ -42,40 +42,19 @@ function addBookToLibrary () {
   
   const readElement = document.createElement("p");
   document.getElementById(bookElement.id).appendChild(readElement);
+  readInput.checked === true ? library[bookElement.id].read = "Yes"
+                             : library[bookElement.id].read = "No";
   readElement.innerHTML += `<strong>Read: </strong>${library[bookElement.id].read}`;
 }
 
 submit.addEventListener("click", (e) => {
   e.preventDefault();
+  
+  if (titleInput.value !== "") {
   addBookToLibraryArr(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
   addBookToLibrary();
+  }
+
   form.reset();
   console.log(library);
 });
-
-// const bookElement = document.createElement("div");
-// document.querySelector(".books").appendChild(bookElement);
-// bookElement.classList.add("book");
-
-// if (document.getElementById(titleInput.value) === null) {
-//   bookElement.id = titleInput.value+authorInput.value;
-
-//   const titleElement = document.createElement("p");
-//   document.getElementById(bookElement.id).appendChild(titleElement);
-//   titleElement.innerHTML += `<strong>Title: </strong>${titleInput.value}`;
-  
-//   const authorElement = document.createElement("p");
-//   document.getElementById(bookElement.id).appendChild(authorElement);
-//   authorElement.innerHTML += `<strong>Author: </strong>${authorInput.value}`;
-  
-//   const pagesElement = document.createElement("p");
-//   document.getElementById(bookElement.id).appendChild(pagesElement);
-//   pagesElement.innerHTML += `<strong>Pages: </strong>${pagesInput.value}`;
-  
-//   const readElement = document.createElement("p");
-//   document.getElementById(bookElement.id).appendChild(readElement);
-//   readElement.innerHTML += `<strong>Read: </strong>${readInput.value}`;
-// } 
-
-
-//Make bookPageElement function, and for each book insert the details of the book from the library array.  For each new bookPageElement made the title of the book should be that divs identifier
