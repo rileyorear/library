@@ -14,41 +14,68 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-function addBooktoLibrary(title, author, pages, read) {
+function addBookToLibraryArr(title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   library.push(book);
 }
 
-function addBooktoPage() {
-  const bookElement = document.createElement("div");
-  document.querySelector(".books").appendChild(bookElement);
+let counter = 0;
+function addBookToLibrary () {
+  bookElement = document.createElement("div");
+  document.querySelector(".books").appendChild(bookElement)
   bookElement.classList.add("book");
+
+  bookElement.id = counter;
+  counter++;
+
+  const titleElement = document.createElement("p");
+  document.getElementById(bookElement.id).appendChild(titleElement);
+  titleElement.innerHTML += `<strong>Title: </strong>${library[bookElement.id].title}`;
   
-  if (document.getElementById(titleInput.value) === null) {
-    bookElement.id = titleInput.value+authorInput.value;
+  const authorElement = document.createElement("p");
+  document.getElementById(bookElement.id).appendChild(authorElement);
+  authorElement.innerHTML += `<strong>Author: </strong>${library[bookElement.id].author}`;
   
-    const titleElement = document.createElement("p");
-    document.getElementById(bookElement.id).appendChild(titleElement);
-    titleElement.innerHTML += `<strong>Title: </strong>${titleInput.value}`;
-    
-    const authorElement = document.createElement("p");
-    document.getElementById(bookElement.id).appendChild(authorElement);
-    authorElement.innerHTML += `<strong>Author: </strong>${authorInput.value}`;
-    
-    const pagesElement = document.createElement("p");
-    document.getElementById(bookElement.id).appendChild(pagesElement);
-    pagesElement.innerHTML += `<strong>Pages: </strong>${pagesInput.value}`;
-    
-    const readElement = document.createElement("p");
-    document.getElementById(bookElement.id).appendChild(readElement);
-    readElement.innerHTML += `<strong>Read: </strong>${readInput.value}`;
-  }
+  const pagesElement = document.createElement("p");
+  document.getElementById(bookElement.id).appendChild(pagesElement);
+  pagesElement.innerHTML += `<strong>Pages: </strong>${library[bookElement.id].pages}`;
+  
+  const readElement = document.createElement("p");
+  document.getElementById(bookElement.id).appendChild(readElement);
+  readElement.innerHTML += `<strong>Read: </strong>${library[bookElement.id].read}`;
 }
 
 submit.addEventListener("click", (e) => {
   e.preventDefault();
-  addBooktoLibrary(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
-  addBooktoPage();
+  addBookToLibraryArr(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
+  addBookToLibrary();
   form.reset();
   console.log(library);
 });
+
+// const bookElement = document.createElement("div");
+// document.querySelector(".books").appendChild(bookElement);
+// bookElement.classList.add("book");
+
+// if (document.getElementById(titleInput.value) === null) {
+//   bookElement.id = titleInput.value+authorInput.value;
+
+//   const titleElement = document.createElement("p");
+//   document.getElementById(bookElement.id).appendChild(titleElement);
+//   titleElement.innerHTML += `<strong>Title: </strong>${titleInput.value}`;
+  
+//   const authorElement = document.createElement("p");
+//   document.getElementById(bookElement.id).appendChild(authorElement);
+//   authorElement.innerHTML += `<strong>Author: </strong>${authorInput.value}`;
+  
+//   const pagesElement = document.createElement("p");
+//   document.getElementById(bookElement.id).appendChild(pagesElement);
+//   pagesElement.innerHTML += `<strong>Pages: </strong>${pagesInput.value}`;
+  
+//   const readElement = document.createElement("p");
+//   document.getElementById(bookElement.id).appendChild(readElement);
+//   readElement.innerHTML += `<strong>Read: </strong>${readInput.value}`;
+// } 
+
+
+//Make bookPageElement function, and for each book insert the details of the book from the library array.  For each new bookPageElement made the title of the book should be that divs identifier
