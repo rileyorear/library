@@ -20,7 +20,7 @@ function addBookToLibraryArr(title, author, pages, read) {
 }
 
 let counter = 0;
-function addBookToLibrary () {
+function bookLibraryManagement () {
   bookElement = document.createElement("div");
   document.querySelector(".books").appendChild(bookElement)
   bookElement.classList.add("book");
@@ -57,12 +57,12 @@ function addBookToLibrary () {
 
 submit.addEventListener("click", (e) => {
   e.preventDefault();
-
+  
   if (titleInput.value !== "") {
-  addBookToLibraryArr(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
-  addBookToLibrary();
+    addBookToLibraryArr(titleInput.value, authorInput.value, pagesInput.value, readInput.value);
+    bookLibraryManagement();
   }
-
+  
   form.reset();
   console.log(library);
 });
@@ -71,8 +71,24 @@ function removeBookElement () {
   const deleteElements = document.querySelectorAll(".delete");
   for (deleteElement of deleteElements) {
     deleteElement.addEventListener("click", (e) => {
-      console.log(e.target.parentElement);
       e.target.parentElement.remove();
     })
   }
 }
+
+// function toggleRead () {
+//   const pReads = document.querySelectorAll(".p-read");
+//   for (pRead of pReads) {
+//     pRead.addEventListener("click", (e) => {
+//       if (e.target.textContent === "Read: No") {
+//         library[e.target.parentElement.id].read = "Yes";
+//         e.target.innerHTML = "<strong>Read: </strong>Yes";
+//       }
+//       else if (e.target.textContent === "Read: Yes") {
+//         library[e.target.parentElement.id].read = "No";
+//         e.target.innerHTML = "<strong>Read: </strong>No";
+//       }
+//       console.log(e.target.parentElement.id);
+//     })
+//   }
+// }
